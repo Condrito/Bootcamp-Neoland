@@ -100,8 +100,8 @@ console.log(division);
 
 //1.3 Muestra mediante un console el resto de dividir 15 por 9.
 
-let division2 = 15 / 9;
-console.log(division2);
+let resto = 15 % 9;
+console.log(resto);
 
 
 /*1.4 Usa el correcto operador de asignación que resultará en o = 15, 
@@ -246,9 +246,11 @@ for(let i = 0; i <= 9; i++) {
 /*1.2 Crea un bucle for que vaya desde 0 a 9 y muestralo por consola solo 
 cuando el resto del numero dividido entre 2 sea 0.*/
 
-for(let i = 0; i / 2 == 0; i++); {
-	console.log(i);
-}
+for(let i = 0; i <= 9; i++)
+	if (i % 2 == 0) {
+    console.log(i);
+    }
+
 
 
 /*
@@ -256,3 +258,10 @@ for(let i = 0; i / 2 == 0; i++); {
 Este bucle tiene que dar 10 vueltas, es decir, 10 console.log.
 Muestra por consola un mensaje diciendo 'Intentando dormir 🐑' en cada vuelta del bucle 
 y cambia el mensaje en la décima vuelta a 'Dormido!'.*/
+
+for(let dormir = 0; dormir <= 9; dormir++)
+    if (dormir <= 8) {
+console.log("Intentando dormir 🐑");
+    } else {
+      console.log("Dormido")
+    }
