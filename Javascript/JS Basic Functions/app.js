@@ -306,3 +306,28 @@ const counterWords = [
 ];
 
 
+const repetCounter = (array) => {
+
+  let counter = 0;
+  let repeats = [];
+
+  array.forEach ((element) =>{
+    counter = 0;
+
+    array.forEach ((repeatElement) =>{
+      if (element == repeatElement) counter++;})
+
+      repeats.push(element+" "+counter)
+  });
+ let repeatsWithoutDuplicates =[];
+
+ repeats.forEach ((element)=>{
+  if (!repeatsWithoutDuplicates.includes(element)){
+    repeatsWithoutDuplicates.push(element);
+  }
+ })
+ console.log(repeatsWithoutDuplicates);
+}
+
+repetCounter(counterWords);
+
