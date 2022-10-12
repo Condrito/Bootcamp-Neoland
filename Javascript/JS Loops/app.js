@@ -133,11 +133,9 @@ for (const destination of placesToTravel) {
   console.log(destination);
 }
 
-
 /*----------------------------------------------------------------------------------
 ------------------------**Iteración #4: Probando For...in**-------------------------
 ------------------------------------------------------------------------------------*/
-
 
 /*Usa un **for...in** para imprimir por consola los datos del alienígena.. Puedes usar este objeto:
 
@@ -150,10 +148,49 @@ const alien = {
 */
 
 const alien = {
-  name: 'Wormuck',
-  race: 'Cucusumusu',
-  planet: 'Eden',
-  weight: '259kg'
+  name: "Wormuck",
+  race: "Cucusumusu",
+  planet: "Eden",
+  weight: "259kg",
+};
+
+for (const key in alien) {
+  console.log(`the ${key} of alien is ${alien[key]}`);
 }
 
-for (const key in alien) {console.log(`the ${key} of alien is ${alien[key]}`)};
+/*----------------------------------------------------------------------------------
+------------------------**Iteración #5: Probando For**-------------------------
+------------------------------------------------------------------------------------*/
+
+/*Usa un bucle **for** para recorrer todos los destinos del array y elimina los elementos que tengan el id 11 y 40.
+ Imprime en un ***console log*** el array. Puedes usar este array:
+
+const placesToTravel = [
+  { id: 5, name: "Japan" },
+  { id: 11, name: "Venecia" },
+  { id: 23, name: "Murcia" },
+  { id: 40, name: "Santander" },
+  { id: 44, name: "Filipinas" },
+  { id: 59, name: "Madagascar" },
+];
+*/
+
+const placesToTravel2 = [
+  { id: 5, name: "Japan" },
+  { id: 11, name: "Venecia" },
+  { id: 23, name: "Murcia" },
+  { id: 40, name: "Santander" },
+  { id: 44, name: "Filipinas" },
+  { id: 59, name: "Madagascar" },
+];
+
+const placesTavel = [];
+
+for (let i = 0; i < placesToTravel2.length; i++) {
+  const place = placesToTravel2[i];
+  if ((place.id != 11) && place.id != 40){
+    placesTavel.push(place);
+  }
+  
+}
+console.log(placesTavel);
