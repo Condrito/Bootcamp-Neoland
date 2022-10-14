@@ -242,3 +242,43 @@ if (!favoritesSoundsCounterWithoutDuplicates.includes(sound)){
 }
 })
 console.log(favoritesSoundsCounterWithoutDuplicates);
+
+
+
+/*----------------------------------------------------------------------------------
+---------------------**Iteración #4: Métodos findArrayIndex**-----------------------
+------------------------------------------------------------------------------------*/
+
+
+/*Crea una función llamada `findArrayIndex` que reciba como parametros un array de textos y un texto y devuelve 
+la posición del array cuando el valor del array sea igual al valor del texto que enviaste como parametro. 
+Haz varios ejemplos y compruebalos.
+
+Sugerencia de función:
+
+function findArrayIndex(array, text) {}
+
+Ej array:
+
+['Caracol', 'Mosquito', 'Salamandra', 'Ajolote']
+*/
+
+const bichos = ['Caracol', 'Mosquito', 'Salamandra', 'Ajolote'];
+
+const findArrayIndex = (array, text) => {
+  if (array.includes(text)){
+
+
+    console.log(`el bicho ${text} esta en la posicion ${array.indexOf(text)}`);
+
+  }else{
+    console.log(`el bicho ${text} no esta en la lista`);
+  }
+}
+
+findArrayIndex(bichos, 'Caracol');
+findArrayIndex(bichos, 'Mosquito');
+findArrayIndex(bichos, 'Salamandra');
+findArrayIndex(bichos, 'Ajolote');
+findArrayIndex(bichos, 'Avispa');
+
