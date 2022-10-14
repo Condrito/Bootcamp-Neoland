@@ -136,7 +136,6 @@ for (const volume of volumeList) {
 let averageVolume = totalVolume / volumeList.length;
 console.log(averageVolume);
 
-
 /*----------------------------------------------------------------------------------
 ----------------------------**Iteración #3: Mix Fors**------------------------------
 ------------------------------------------------------------------------------------*/
@@ -182,42 +181,44 @@ const users2 = [
 */
 
 const users2 = [
-  {name: 'Manolo el del bombo',
-      favoritesSounds: {
-          waves: {format: 'mp3', volume: 50},
-          rain: {format: 'ogg', volume: 60},
-          firecamp: {format: 'mp3', volume: 80},
-      }
+  {
+    name: "Manolo el del bombo",
+    favoritesSounds: {
+      waves: { format: "mp3", volume: 50 },
+      rain: { format: "ogg", volume: 60 },
+      firecamp: { format: "mp3", volume: 80 },
+    },
   },
-  {name: 'Mortadelo',
-      favoritesSounds: {
-          waves: {format: 'mp3', volume: 30},
-          shower: {format: 'ogg', volume: 55},
-          train: {format: 'mp3', volume: 60},
-      }
+  {
+    name: "Mortadelo",
+    favoritesSounds: {
+      waves: { format: "mp3", volume: 30 },
+      shower: { format: "ogg", volume: 55 },
+      train: { format: "mp3", volume: 60 },
+    },
   },
-  {name: 'Super Lopez',
-      favoritesSounds: {
-          shower: {format: 'mp3', volume: 50},
-          train: {format: 'ogg', volume: 60},
-          firecamp: {format: 'mp3', volume: 80},
-      }
+  {
+    name: "Super Lopez",
+    favoritesSounds: {
+      shower: { format: "mp3", volume: 50 },
+      train: { format: "ogg", volume: 60 },
+      firecamp: { format: "mp3", volume: 80 },
+    },
   },
-  {name: 'El culebra',
-      favoritesSounds: {
-          waves: {format: 'mp3', volume: 67},
-          wind: {format: 'ogg', volume: 35},
-          firecamp: {format: 'mp3', volume: 60},
-      }
+  {
+    name: "El culebra",
+    favoritesSounds: {
+      waves: { format: "mp3", volume: 67 },
+      wind: { format: "ogg", volume: 35 },
+      firecamp: { format: "mp3", volume: 60 },
+    },
   },
 ];
 
 let favoritesSoundsList = [];
 
-
 for (const user of users2) {
   for (const key in user.favoritesSounds) {
-    
     favoritesSoundsList.push(key);
   }
 }
@@ -227,28 +228,26 @@ console.log(favoritesSoundsList);
 let counter = 0;
 let favoritesSoundsCounter = [];
 
-favoritesSoundsList.forEach ((sound) =>{
+favoritesSoundsList.forEach((sound) => {
   counter = 0;
 
-  favoritesSoundsList.forEach ((repeatElement) =>{
-    if (sound == repeatElement) counter++;})
+  favoritesSoundsList.forEach((repeatElement) => {
+    if (sound == repeatElement) counter++;
+  });
 
-    favoritesSoundsCounter.push(sound+" "+counter)
+  favoritesSoundsCounter.push(sound + " " + counter);
 });
-let favoritesSoundsCounterWithoutDuplicates =[];
-favoritesSoundsCounter.forEach ((sound)=>{
-if (!favoritesSoundsCounterWithoutDuplicates.includes(sound)){
-  favoritesSoundsCounterWithoutDuplicates.push(sound);
-}
-})
+let favoritesSoundsCounterWithoutDuplicates = [];
+favoritesSoundsCounter.forEach((sound) => {
+  if (!favoritesSoundsCounterWithoutDuplicates.includes(sound)) {
+    favoritesSoundsCounterWithoutDuplicates.push(sound);
+  }
+});
 console.log(favoritesSoundsCounterWithoutDuplicates);
-
-
 
 /*----------------------------------------------------------------------------------
 ---------------------**Iteración #4: Métodos findArrayIndex**-----------------------
 ------------------------------------------------------------------------------------*/
-
 
 /*Crea una función llamada `findArrayIndex` que reciba como parametros un array de textos y un texto y devuelve 
 la posición del array cuando el valor del array sea igual al valor del texto que enviaste como parametro. 
@@ -263,22 +262,33 @@ Ej array:
 ['Caracol', 'Mosquito', 'Salamandra', 'Ajolote']
 */
 
-const bichos = ['Caracol', 'Mosquito', 'Salamandra', 'Ajolote'];
+const bichos = ["Caracol", "Mosquito", "Salamandra", "Ajolote"];
 
 const findArrayIndex = (array, text) => {
-  if (array.includes(text)){
-
-
+  if (array.includes(text)) {
     console.log(`el bicho ${text} esta en la posicion ${array.indexOf(text)}`);
-
-  }else{
+  } else {
     console.log(`el bicho ${text} no esta en la lista`);
   }
-}
+};
 
-findArrayIndex(bichos, 'Caracol');
-findArrayIndex(bichos, 'Mosquito');
-findArrayIndex(bichos, 'Salamandra');
-findArrayIndex(bichos, 'Ajolote');
-findArrayIndex(bichos, 'Avispa');
+findArrayIndex(bichos, "Caracol");
+findArrayIndex(bichos, "Mosquito");
+findArrayIndex(bichos, "Salamandra");
+findArrayIndex(bichos, "Ajolote");
+findArrayIndex(bichos, "Avispa");
 
+/*----------------------------------------------------------------------------------
+------------------------**Iteración #5: Función rollDice**--------------------------
+------------------------------------------------------------------------------------*/
+
+/*Crea una función llamada **rollDice()** que reciba como parametro el numero de caras que queramos que tenga el dado 
+que deberá siumlar el codigo dentro de la función. Como hemos dicho, que la función use el parametro para simular una 
+tirada de dado y retornar el resultado. Si no se te ocurre como hacer un numero aleatorio no te preocupes! busca información 
+sobre la función de javascript **Math.random();*/
+
+const rollDice = (numeroDeCaras) => {
+  console.log(Math.floor(Math.random() * numeroDeCaras) + 1);
+};
+
+rollDice(6);
