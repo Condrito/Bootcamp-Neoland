@@ -292,3 +292,34 @@ const rollDice = (numeroDeCaras) => {
 };
 
 rollDice(6);
+
+
+
+/*----------------------------------------------------------------------------------
+--------------------------**Iteración #6: Función swap**----------------------------
+------------------------------------------------------------------------------------*/
+
+/*Crea una función llamada `swap()` que reciba un array y dos parametros que sean indices del array.
+La función deberá intercambiar la posición de los valores de los indices que hayamos enviado como parametro.
+Retorna el array resultante.
+
+Sugerencia de array:
+['Mesirve', 'Cristiano Romualdo', 'Fernando Muralla', 'Ronalguiño']
+*/
+
+const footballPlayers = ['Mesirve', 'Cristiano Romualdo', 'Fernando Muralla', 'Ronalguiño'];
+
+const swap = (list, player1, player2) => {
+  let position1 = list.indexOf(player1);
+  let position2 = list.indexOf(player2);
+
+  list.splice(position2, 1, player1);
+  list.splice(position1, 1, player2);
+
+
+
+}
+
+swap(footballPlayers, 'Cristiano Romualdo', 'Mesirve');
+
+console.log(footballPlayers);
