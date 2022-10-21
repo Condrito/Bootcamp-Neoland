@@ -84,28 +84,25 @@ console.log(name1, itv);
 let [year1, year2, year3] = itv;
 console.log(year1, year2, year3);
 
-
-
 /*----------------------------------------------------------------------------------
 ------------------------**Iteración #3: Spread Operator**---------------------------
 ------------------------------------------------------------------------------------*/
-
 
 /*3.1 Dado el siguiente array, crea una copia usando spread operators.
 const pointsList = [32, 54, 21, 64, 75, 43]*/
 
 const pointsList = [32, 54, 21, 64, 75, 43];
 
-const pointsListCopy=[...pointsList];
+const pointsListCopy = [...pointsList];
 
 console.log(pointsListCopy);
 
 /*3.2 Dado el siguiente objeto, crea una copia usando spread operators.
 const toy = {name: 'Bus laiyiar', date: '20-30-1995', color: 'multicolor'};*/
 
-const toy = {name: 'Bus laiyiar', date: '20-30-1995', color: 'multicolor'};
+const toy = { name: "Bus laiyiar", date: "20-30-1995", color: "multicolor" };
 
-const toyCopy={...toy};
+const toyCopy = { ...toy };
 
 console.log(toyCopy);
 /*3.3 Dado los siguientes arrays, crea un nuevo array juntandolos usando 
@@ -114,9 +111,9 @@ const pointsList2 = [32, 54, 21, 64, 75, 43];
 const pointsLis3 = [54,87,99,65,32];*/
 
 const pointsList2 = [32, 54, 21, 64, 75, 43];
-const pointsLis3 = [54,87,99,65,32];
+const pointsLis3 = [54, 87, 99, 65, 32];
 
-const pointsLisSum=[...pointsList2, ...pointsLis3];
+const pointsLisSum = [...pointsList2, ...pointsLis3];
 
 console.log(pointsLisSum);
 
@@ -125,10 +122,10 @@ con spread operators.
 const toy2 = {name: 'Bus laiyiar', date: '20-30-1995', color: 'multicolor'};
 const toyUpdate = {lights: 'rgb', power: ['Volar like a dragon', 'MoonWalk']}*/
 
-const toy2 = {name: 'Bus laiyiar', date: '20-30-1995', color: 'multicolor'};
-const toyUpdate = {lights: 'rgb', power: ['Volar like a dragon', 'MoonWalk']}
+const toy2 = { name: "Bus laiyiar", date: "20-30-1995", color: "multicolor" };
+const toyUpdate = { lights: "rgb", power: ["Volar like a dragon", "MoonWalk"] };
 
-const toyFusion={...toy2, ...toyUpdate};
+const toyFusion = { ...toy2, ...toyUpdate };
 
 console.log(toyFusion);
 
@@ -136,10 +133,86 @@ console.log(toyFusion);
 pero sin editar el array inicial. De nuevo, usando spread operatos.
 const colors = ['rojo', 'azul', 'amarillo', 'verde', 'naranja'];*/
 
-const colors = ['rojo', 'azul', 'amarillo', 'verde', 'naranja'];
+const colors = ["rojo", "azul", "amarillo", "verde", "naranja"];
 
-const colors2= [...colors];
+const colors2 = [...colors];
 
-colors2.splice(2,1);
+colors2.splice(2, 1);
 
 console.log(colors2);
+
+/*----------------------------------------------------------------------------------
+-------------------------------**Iteración #4: Map**--------------------------------
+------------------------------------------------------------------------------------*/
+
+/*4.1 Dado el siguiente array, devuelve un array con sus nombres 
+utilizando .map().
+const users = [
+	{id: 1, name: 'Abel'},
+	{id:2, name: 'Julia'},
+	{id:3, name: 'Pedro'},
+	{id:4, name: 'Amanda'}
+];*/
+
+const users = [
+  { id: 1, name: "Abel" },
+  { id: 2, name: "Julia" },
+  { id: 3, name: "Pedro" },
+  { id: 4, name: "Amanda" },
+];
+
+const usersName = users.map((user) => {
+  return user.name;
+});
+console.log(usersName);
+
+/*4.2 Dado el siguiente array, devuelve una lista que contenga los valores 
+de la propiedad .name y cambia el nombre a 'Anacleto' en caso de que 
+empiece por 'A'.
+const users2 = [
+	{id: 1, name: 'Abel'},
+	{id:2, name: 'Julia'},
+	{id:3, name: 'Pedro'},
+	{id:4, name: 'Amanda'}
+];*/
+
+const users2 = [
+  { id: 1, name: "Abel" },
+  { id: 2, name: "Julia" },
+  { id: 3, name: "Pedro" },
+  { id: 4, name: "Amanda" },
+];
+
+const usersName2 = users2.map((user) => {
+	if(user.name.startsWith("A")){
+		user.name = "Anacleto";
+	}
+	return user.name;
+  });
+  console.log(usersName2);
+
+/*4.3 Dado el siguiente array, devuelve una lista que contenga los valores 
+de la propiedad .name y añade al valor de .name el string ' (Visitado)' 
+cuando el valor de la propiedad isVisited = true.
+const cities = [
+	{isVisited:true, name: 'Tokyo'}, 
+	{isVisited:false, name: 'Madagascar'},
+	{isVisited:true, name: 'Amsterdam'}, 
+	{isVisited:false, name: 'Seul'}
+];*/
+
+const cities = [
+  { isVisited: true, name: "Tokyo" },
+  { isVisited: false, name: "Madagascar" },
+  { isVisited: true, name: "Amsterdam" },
+  { isVisited: false, name: "Seul" },
+];
+
+const visitedCities = cities.map((city) => {
+	if(city.isVisited === true){
+		return city.name + " (Visitado)";
+	}else{
+		return city.name
+	}
+})
+console.log(visitedCities);
