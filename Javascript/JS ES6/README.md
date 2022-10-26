@@ -32,6 +32,8 @@ const animalFunction = () => {
     return {name: 'Bengal Tiger', race: 'Tiger'}
 };
 
+
+
 2.4 En base al siguiente javascript, usa destructuring para crear las 
 variables name y itv con sus respectivos valores. Posteriormente crea 
 3 variables usando igualmente el destructuring para cada uno de los años 
