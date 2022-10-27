@@ -293,8 +293,6 @@ const rollDice = (numeroDeCaras) => {
 
 rollDice(6);
 
-
-
 /*----------------------------------------------------------------------------------
 --------------------------**Iteración #6: Función swap**----------------------------
 ------------------------------------------------------------------------------------*/
@@ -307,7 +305,12 @@ Sugerencia de array:
 ['Mesirve', 'Cristiano Romualdo', 'Fernando Muralla', 'Ronalguiño']
 */
 
-const footballPlayers = ['Mesirve', 'Cristiano Romualdo', 'Fernando Muralla', 'Ronalguiño'];
+const footballPlayers = [
+  "Mesirve",
+  "Cristiano Romualdo",
+  "Fernando Muralla",
+  "Ronalguiño",
+];
 
 const swap = (list, player1, player2) => {
   let position1 = list.indexOf(player1);
@@ -315,11 +318,8 @@ const swap = (list, player1, player2) => {
 
   list.splice(position2, 1, player1);
   list.splice(position1, 1, player2);
+};
 
-
-
-}
-
-swap(footballPlayers, 'Cristiano Romualdo', 'Mesirve');
+swap(footballPlayers, "Cristiano Romualdo", "Mesirve");
 
 console.log(footballPlayers);
