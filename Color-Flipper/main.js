@@ -11,21 +11,18 @@ const COLOR_PALETTE = {
   '#00FF00': 'Lime',
   '#00FFFF': 'Aqua'
 };
+const colorPickerSelect = document.querySelector("#color-picker");
 
 const addOptionsToColorPicker = () => {
-  const colorPickerSelect = document.querySelector("#color-picker");
-
 Object.keys(COLOR_PALETTE).forEach((color)=>{
   const option =document.createElement("option");
   option.value=color;
   option.innerText=COLOR_PALETTE[color];
-
   colorPickerSelect.append(option);
 })
 }
 
 const addEventListenerToColorPicker =() => {
-  const colorPickerSelect = document.querySelector("#color-picker");
   const colorName = document.querySelector("#color-name");
 
   colorPickerSelect.addEventListener("change", (event)=>{
