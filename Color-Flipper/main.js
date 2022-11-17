@@ -12,14 +12,6 @@ const COLOR_PALETTE = {
   '#00FFFF': 'Aqua'
 };
 
-Object.keys(COLOR_PALETTE).forEach((color)=>{
-  const option = document.createElement("option");
-  option.value = color;
-  option.innerText= COLOR_PALETTE[color];
-});
-
-
-
 const addOptionsToColorPicker = () => {
   const colorPickerSelect = document.querySelector("#color-picker");
 
