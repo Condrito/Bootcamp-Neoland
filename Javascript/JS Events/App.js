@@ -40,7 +40,7 @@ let focusElement = document.querySelector(".focus");
 focusElement.onfocus = function () {
   console.log(focusElement.value);
 };
-
+//otra forma de hacerlo
 focusElement.addEventListener('focus', (event) => {
     console.log(focusElement.value);
     console.log(event);
@@ -49,9 +49,6 @@ focusElement.addEventListener('focus', (event) => {
 //1.3 Añade un evento 'input' que ejecute un console.log con el valor del input.
 
 let imputText = document.querySelector('.value');
-imputText.onchange = function() {
-    console.log(imputText.value);
-}
 
 imputText.addEventListener('input',(event)=> {
     console.log(imputText.value);
