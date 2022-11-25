@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+
+body{
+    display: flex;
+}
+
+div{
+background-color: #e74c3c;
+}
+
+p{
+    background-color:#9b59b6;
+}
+
+span{
+    background-color:#3498db;
+display: block;
+}
+
+a{
+    background-color:#2ecc71;
+display: block;
+}
+
+div, p, span, a{
+    height: 40px;
+    width: 150px;
+    padding: 10px;
+    margin:10px;
+}
+
