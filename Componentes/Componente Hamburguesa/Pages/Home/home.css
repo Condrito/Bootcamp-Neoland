@@ -1,0 +1,8 @@
+.text {
+    text-transform: uppercase;
+  }
+  
+  .logo {
+    width: 250px;
+    border-radius: 50%;
+  }
