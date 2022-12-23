@@ -1,7 +1,6 @@
 import "./login.css";
-import { printLogoutBtn } from "../componentes/navbar/Navbar";
-import { addEventLogout } from "../componentes/navbar/Navbar";
-import { createDashboard } from "../dashboard/Dashboard";
+import { init } from "../../main"
+import { activeLogoutBtn } from "../../utiles/utiles";
 
 
 export const loginExe = () => {
@@ -16,23 +15,25 @@ export const loginExe = () => {
   </div>
     `;
     addEventLogin()
+    document.querySelector('#logoutBtn').style.display='none'
     
 };
 
 
-
 const StorageUser=(username)=>{
  const loginInput= document.querySelector('#inputLogin')
-  sessionStorage.setItem("user",username);
+  localStorage.setItem("user",username);
  document.querySelector("#saludo").innerHTML=`Hola ${loginInput.value}`;
-  
-
+ activeLogoutBtn()
+ 
+ init("dashboard")
 }
 
  const addEventLogin = () => {
   const loginButton = document.querySelector("#loginBtn");
-  const loginInput= document.querySelector('#inputLogin')
-  loginButton.addEventListener("click", ()=>{StorageUser(loginInput.value), printLogoutBtn(),addEventLogout(),createDashboard()  } 
+  const loginInput= document.querySelector('#inputLogin');
+  loginButton.addEventListener("click", ()=>{StorageUser(loginInput.value) } 
+  
  
   );
 };

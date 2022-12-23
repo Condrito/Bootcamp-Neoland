@@ -1,0 +1,24 @@
+#dashboardContainer{
+    background-color: aqua; 
+     
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80%;
+    width: 80%;
+}
+
+#pokeapiBtn{
+    border: none;
+    background: none;
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+
+}
+
+#pokeapiBtn > img{
+    width: 100%;
+    height: 100%;
+
+}
