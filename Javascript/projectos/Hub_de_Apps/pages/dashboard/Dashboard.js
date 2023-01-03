@@ -1,5 +1,6 @@
 import './dashboard.css';
 import { mantenerSaludo } from '../../utiles/utiles';
+import { init } from '../../main';
 
 
 
@@ -12,5 +13,12 @@ export const createDashboard=()=>{
     </div>
     `
     mantenerSaludo()
+    addEventPokeapi()
 
+}
+
+const addEventPokeapi=()=>{
+    document.querySelector("#pokeapiBtn").addEventListener("click",()=>{
+        init("pokeApi")
+    })
 }

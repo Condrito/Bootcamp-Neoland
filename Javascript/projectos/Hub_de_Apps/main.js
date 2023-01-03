@@ -3,7 +3,7 @@ import { loginExe } from './pages/login/Login'
 import { createNavbar } from './pages/componentes/navbar/Navbar'
 import { addEventColor } from './utiles/utiles'
 import { createDashboard } from './pages/dashboard/Dashboard'
-
+import { printPokemons } from './pages/pokeapi/Pokeapi'
 
 createNavbar()
 
@@ -21,6 +21,9 @@ export const init=(navigation)=>{
             break;
         case "dashboard":
             createDashboard();
+            break;
+        case "pokeApi":
+            printPokemons();
             break;
         
     }

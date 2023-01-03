@@ -25,9 +25,9 @@ localStorage.getItem("user")
 
 
 export const mantenerSaludo=()=>{
-    let username2 = localStorage.getItem("user")
+    let username = localStorage.getItem("user")
 document.querySelector("#saludo").innerHTML=`
-${username2}
+Hola ${username}
 `
 
 }
