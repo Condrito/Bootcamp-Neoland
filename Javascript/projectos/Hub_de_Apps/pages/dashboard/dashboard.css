@@ -14,7 +14,12 @@
     width: 200px;
     height: 200px;
     border-radius: 30px;
+    transition: 0.3s;
 
+}
+
+#pokeapiBtn:hover{
+    scale: 1.2;
 }
 
 #pokeapiBtn > img{

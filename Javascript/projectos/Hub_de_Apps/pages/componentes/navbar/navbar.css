@@ -37,6 +37,11 @@
     color: aliceblue;
     box-shadow: 0 7px 10px 5px rgba(0, 0, 0, 0.2);
     border-radius: 3px;
+    transition: 0.3s;
+}
+
+#colormodeBtn:hover{
+    scale: 1.1;
 }
 
 #buttonContainer{
@@ -51,5 +56,11 @@
     color: aliceblue;
     box-shadow: 0 7px 10px 5px rgba(0, 0, 0, 0.2);
     border-radius: 3px;
-    
+    transition: 0.3s;
+}
+#logoutBtn:hover{
+    scale: 1.1;
+}
+#homeBtn{
+    display: none;
 }

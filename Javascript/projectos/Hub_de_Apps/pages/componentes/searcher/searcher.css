@@ -1,0 +1,25 @@
+.pokeSearcher{
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    border: solid 1px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    top: 5%;
+    padding: 10px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+
+}
+
+#pokeSearcherImput{
+    background-color: aqua;
+    height: 40px;
+    
+}
+

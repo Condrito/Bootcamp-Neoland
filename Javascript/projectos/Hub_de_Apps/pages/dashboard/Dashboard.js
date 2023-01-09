@@ -16,9 +16,11 @@ export const createDashboard=()=>{
     addEventPokeapi()
 
 }
-
+const homeVisible=()=>{
+    document.querySelector("#homeBtn").style.display = 'block';
+}
 const addEventPokeapi=()=>{
     document.querySelector("#pokeapiBtn").addEventListener("click",()=>{
-        init("pokeApi")
+        init("pokeApi"),homeVisible()
     })
 }
