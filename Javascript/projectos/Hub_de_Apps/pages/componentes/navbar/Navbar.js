@@ -11,7 +11,9 @@ nadvar.innerHTML= `
 <p id="saludo"></p>
 <button type = "button" id="logoutBtn">Logout</buton>
 <button type = "button" id="colormodeBtn">Color Mode</buton>
-<button type = "button" id="homeBtn">HomeBtn</buton>
+<button type = "button" id="homeBtn"><span class="material-symbols-outlined">
+home
+</span></buton>
 
 `
 document.querySelector('header').appendChild(nadvar)

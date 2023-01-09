@@ -40,7 +40,7 @@ pokeCards.forEach(function(pokeCard) {
   pokeCard.style.display = 'none';
 });
 pokeCardsType.forEach(function(pokeCardType) {
-    pokeCardType.style.display = 'block';
+    pokeCardType.style.display = 'flex';
 });
 
 }

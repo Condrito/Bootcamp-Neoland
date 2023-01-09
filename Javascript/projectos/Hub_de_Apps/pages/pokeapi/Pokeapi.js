@@ -1,6 +1,8 @@
 import "./pokeapi.css";
 import { printPokeSearcher } from "../componentes/searcher/Searcher";
 import { typesColors } from "../../utiles/poketypes";
+import { typesIncons } from "../../utiles/poketypes";
+
 
 export const pokemonList = [];
 
@@ -39,13 +41,34 @@ export const printPokeCards = (list) => {
     const tipo1 = item.tipos[0].type.name;
     const tipo2 = item.tipos[1] ? item.tipos[1].type.name : "";
 
+
+    let iconOne=""
+   let iconTwo= ""
+    for (const type1 in typesIncons) {
+      if (tipo1 == type1) {
+        iconOne = typesIncons[type1];
+        iconTwo= iconOne
+      }
+      
+      for (const type2 in typesIncons) {
+        if (tipo2 == type2) {
+          iconTwo = typesIncons[type2];
+          
+        
+        }
+       
+      }
+      
+    }
+    
     pokeCard.innerHTML = `
     <div class="headerCard">
     <p class="pokemonId" >${item.id}</p>
     <div class="typesContainer">
-        <p class="pokemonType">${tipo1}</p>
-        <p class="pokemonType">${tipo2}</p>
-        </div>
+        ${item.tipos.length > 1
+          ? `<img class="icon" src=${iconOne} alt=${tipo1} /><img class="icon" src=${iconTwo} alt=${tipo2} />`
+          : `<img class="icon" src=${iconOne} alt=${tipo1} />`}
+        </div> 
         </div>
        
         <img class="pokemonImg" src="${item.img}" alt="${item.nombre}">

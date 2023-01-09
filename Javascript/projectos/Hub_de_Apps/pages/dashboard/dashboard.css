@@ -27,3 +27,22 @@
     height: 100%;
 
 }
+
+#whacamoleBtn{
+    border: none;
+    background: none;
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+#whacamoleBtn:hover{
+    scale: 1.2;
+}
+
+#whacamoleBtn > img{
+    width: 100%;
+    height: 100%;
+
+}

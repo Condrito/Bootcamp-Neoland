@@ -10,6 +10,9 @@ export const createDashboard=()=>{
     <button type= "button" id="pokeapiBtn">
     <img src="https://databar.ai/media/external_source_logo/pokeapi.png" alt="PokeApi">
     </button>
+    <button type= "button" id="whacamoleBtn">
+    <img src="./whacamoleIMG-removebg-preview.png">
+    </button>
     </div>
     `
     mantenerSaludo()
