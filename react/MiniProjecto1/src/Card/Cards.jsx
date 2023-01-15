@@ -4,43 +4,46 @@ import './Cards.css'
 
 
 
-const Cards =()=> {
+const Cards =({pag})=> {
   
   
     const [characters, setCharacters] = useState([]);
-    const[pages, setPages]=useState()
-  let pagina
-    const changePages=()=>{setPages(pagina++)}
-   
-
 
     React.useEffect(() => {
       
       (async () => {
-        
-        let data = await fetch(`https://rickandmortyapi.com/api/character/?page=${pages}`).then(
+      
+        let data = await fetch(`https://rickandmortyapi.com/api/character/?page=${pag}`).then(
           (res) => res.json()
         );
         
         setCharacters(data.results);
       })();
       
-    }, [pages]);
+    }, [pag]);
 
       return (
         <>
-        <button onClick={()=>console.log("hola")}>+</button>
           {characters.map((character) => (
-            <div className="card" key={character.id}>
+            <div className="borderAnimation" key={character.id}>
+            <div className="card" >
+
                 <h2>{character.id}</h2>
               <h3>{character.name}</h3>
               <img className="image" src={character.image} alt={character.name} />
-              {character.status === "Alive"? <p className="alive">{character.status}</p> :<p className="noAlive">{character.status}</p>}
-              <p>{character.origin.name}</p>
+              {character.status == "Alive"?
+                   "" 
+                   : character.status == "Dead"? 
+                          <p className="dead">{character.status}</p>
+                          :<p className="unknown">?</p>}
+              
+              <p className="origin">{character.origin.name}</p>
               
        
             </div>
+            </div>
           ))}
+          
         </>
       );
     };
