@@ -30,16 +30,19 @@ import { useState } from "react";
 
 
   return (
-    <>
+    
+    <main>
+    <div className="buttonContainer">
     {pages > 1 ? <button className="prev" onClick={() => prevPage()}>-</button> : ""}
     {pages < 42 ? <button className="next" onClick={() => nextPage()}>+</button> : ""}
+    </div>
     <ul>
       {characterList.map((character) => (
         
         <ItemList key={character.id} character={character}/>
       ))}
       </ul>
-      </>
+      </main>
     
   );
 };
