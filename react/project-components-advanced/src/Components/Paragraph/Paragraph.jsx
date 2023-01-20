@@ -1,10 +1,10 @@
 import "./Paragraph.css";
 
-const Paragraph =({ text})=>{
+const Paragraph =({ text, classp})=>{
 
 
 return (
-    <p>{text}</p>
+    <p className={classp}>{text}</p>
 
 )
 }

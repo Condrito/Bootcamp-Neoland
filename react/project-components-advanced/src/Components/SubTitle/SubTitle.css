@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Get Schwifty';
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3089507/get-schwifty.woff');
+}
+
+h2{
+    font-family: 'Get Schwifty';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 0px;
+    margin: 0px;
+    color: black;
+    text-shadow: 0 0 0.2em rgb(151,194,30), 0 0 0.2em rgb(151,194,30);
+}

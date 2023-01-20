@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Get Schwifty';
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3089507/get-schwifty.woff');
+}
+
+.name{
+    color:black;
+    font-size: 20px;
+    text-shadow: 0 0 0.2em rgb(151,194,30), 0 0 0.2em rgb(151,194,30);
+    position: absolute;
+    margin: 0;
+    bottom: 50px;
+    left: 20px;
+    font-weight: bold;
+}
+
+.origin{
+    font-family: 'Get Schwifty';
+    color: rgb(0,175,198);
+    text-shadow: 0 0 0.2em rgb(151,194,30), 0 0 0.2em rgb(151,194,30),
+    0 0 0.2em rgb(151,194,30);
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px;
+}

@@ -8,25 +8,28 @@ import Paragraph from "./Components/Paragraph/Paragraph";
 import Image from "./Components/Image/Image";
 import Title from "./Components/Title/Title";
 
-
-
 const App = () => {
-    const imgCopyright="https://static4.depositphotos.com/1001003/340/i/950/depositphotos_3405857-stock-photo-3d-copyright-symbol.jpg"
+  const imgCopyright =
+    "https://static4.depositphotos.com/1001003/340/i/950/depositphotos_3405857-stock-photo-3d-copyright-symbol.jpg";
 
   return (
     <>
       <Header>
-        <Title text="Rick and Morty"/>
+        <Title text="Rick and Morty" />
       </Header>
       <Main>
-      <CharacterList/>
+        <CharacterList />
       </Main>
       <Footer>
-        <Paragraph text="Created by Miguel"/>
-        <Image image={imgCopyright} altText="Copyright" ancho="15px" alto="15px"/>
-        <Paragraph text="Copyright"/>
+        <Paragraph text="Created by Miguel" />
+        <Image
+          image={imgCopyright}
+          altText="Copyright"
+          ancho="15px"
+          alto="15px"
+        />
+        <Paragraph text="Copyright" />
       </Footer>
-     
     </>
   );
 };
