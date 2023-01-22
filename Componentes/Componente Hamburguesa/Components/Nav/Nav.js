@@ -1,7 +1,6 @@
 
 import './nav.css'
 import { navMenu } from './Info/Info'
-import {menu} from './Info/Info'
 
 export const createNav = ()=> {
     document.querySelector('#container').innerHTML= `
@@ -27,20 +26,63 @@ createMenu()
 }
 
 const createMenu = () => {
-  navMenu.forEach(element=>{
+  navMenu.forEach((indices, i)=>{
   document.querySelector('.list').innerHTML +=`
-  <li class = "indice"><p>${element.indice}<a href="#"><span class="material-symbols-outlined">
+  <li class = "indice"><p>${indices.indice}<a href="#"><span id="id${i}" class="material-symbols-outlined">
   expand_more
   </span></a></p>
+  <ul class="subindice${i}"></ul>
   </li>`
+   const ulContainer=document.querySelector(`."subindice${i}"`)
 
-})
-};
+ 
+
+  for (const key in indices) {
+    if (key == "subindice") {
+      const item = indices[key];
+
+      item.forEach((subIndices) => {
+
+        for (const clave in subIndices) {
+          
+            if (clave == "nombre") {
+              element=subIndices[clave]
+              document.querySelector(".ulContainer").innerHTML+=`
+              <li>${element}</li>
+              `
+            }
+          }
+        });
+      }
+    }
+  
+          
+          
+        
+      });
+    }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
-const paintSubmenu = ()=>{
-navMenu.forEach(element=>{
-document.querySelector('.indice').innerHTML += `
-<p>${element.subindice[nombre]}</p>`
-  
-})}
+
+ 
+
+ 
+    
+    
+
+
