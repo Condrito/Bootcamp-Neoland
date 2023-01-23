@@ -5,7 +5,7 @@
 const SongsHeard = ({ data }) => {
     
     return (
-      <div className="songsHeard">
+      <div className="songsHeard card">
             <h2>Songs</h2>
         {
           data.map((song, index) => {

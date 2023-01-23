@@ -5,7 +5,7 @@
 const Movies=({data})=>{
 console.log(data)
     return(
-    <div className="movies">
+    <div className="movies card">
 
     <h2>Audiovisual</h2>
              {data.map((movie, index) => {

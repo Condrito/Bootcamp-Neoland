@@ -56,18 +56,18 @@ export const HOBBIES = {
     languages:[ 
         {
       language: "Castellano",
-      wrlevel: "Native",
-      splevel: "Native",
+      wrlevel: "Nativo",
+      splevel: "Alto",
     },
     {
         language: "Catalá",
-        wrlevel: "High",
-        splevel: "High",
+        wrlevel: "Alto",
+        splevel: "Medio-alto",
       },
       {
         language: "English",
-        wrlevel: "Middlee",
-        splevel: "Middle",
+        wrlevel: "Medio",
+        splevel: "Medio",
       }
     ],
     songsHeard: [
