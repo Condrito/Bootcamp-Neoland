@@ -35,7 +35,7 @@ export const HOBBIES = {
       },
       {
         name: "Football",
-        indoor: true,
+        indoor: false,
         favoriteTeam: "La Roja",
       },
     ],

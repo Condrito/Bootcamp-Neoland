@@ -7,10 +7,11 @@ const Read = ({ data: { title, authorName, authorSurname, dateOfPublication, aut
       <div className="read card">
         <h2>Libro favorito</h2>
         <p>Titulo: {title}</p>
+        <img src={bookImage} alt={title}/>
         <p>Autor: {authorName} {authorSurname}</p>
         <p>Publicado: {dateOfPublication}</p>
         <p>Fecha de nacimiento del autor: {authorBirthDate}</p>
-        <img src={bookImage} alt={title}/>
+        
   
   
         <h3>Otros libros</h3>
