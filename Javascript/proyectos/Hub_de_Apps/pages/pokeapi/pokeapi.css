@@ -15,17 +15,20 @@
 
 .pokemonCard{
     width:200px;
-    height: 350px;
+    height: 250px;
     display: flex;
-    background-color: rgba(255, 255, 255, 0.3);
+    
     backdrop-filter: blur(20px);
-    border: solid 1px rgba(255, 255, 255, 0.5);
-    box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.2);
+    
+    
     border-radius: 15px;
     align-items: center;
     flex-direction: column;
     gap: 2px;
     justify-content: center;
+    
+    
+   
     
     
    
@@ -75,18 +78,7 @@
 
 }
 
-.statsContainer{
-    padding: 7px;
-    font-size: 16px;
-    width: 100%;
-    color: rgba(255, 255, 255, 0.5);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 1px;
-    justify-content:space-between;
-    align-content:space-between;
-}
+
 
 .icon{
     width: 25px;
@@ -94,3 +86,68 @@
     padding: 2px;
 }
 
+.card{
+
+    border: solid 1px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: 1s;
+    backface-visibility: hidden;
+    border-radius: 10px;
+
+}
+.front{
+   
+    transform: perspective(500px) rotateY(0deg);
+    
+     
+}
+
+.nombreTipo{
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+    align-items: center;
+    justify-content:flex-end;
+    gap:15px;
+    
+     
+}
+
+.back{
+    padding: 7px;
+    font-size: 12px;
+    padding: 5px;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1px;
+    align-items: flex-end;
+    padding-right: 10px;
+   
+   
+    transform: perspective(500px) rotateY(180deg);
+    
+
+}
+
+.pokemonCard:hover .front{
+    transform: perspective(500px) rotateY(180deg);
+    
+}
+
+.pokemonCard:hover .back{
+    transform: perspective(500px) rotateY(360deg) ;
+    
+    
+    
+
+    
+}

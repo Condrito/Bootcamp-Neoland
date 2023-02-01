@@ -23,17 +23,24 @@ export const printPokeSearcher =()=>{
 
 const pokeFilter=(inputString)=>{
     const shearchPokemon = pokemonList.filter((pokemon) => pokemon.nombre.includes(inputString));
-  
+  console.log(shearchPokemon)
   document.querySelector(".pokemonsContainer").innerHTML=``;
     printPokeCards(shearchPokemon)
+
+    
+  
+
+    
+    
 }
 
 const addEventShearchInput =()=>{
     document.querySelector("#pokeSearcherInput").addEventListener('input', (ev) => pokeFilter(ev.target.value))
+    
 }
 const pokeType=(select)=>{
-    document.querySelector(".pokemonsContainer").innerHTML=``;
-    printPokeCards(pokemonList)
+   // document.querySelector(".pokemonsContainer").innerHTML=``;
+   // printPokeCards(pokemonList)
     const pokeCards = document.querySelectorAll('.pokemonCard');
     const pokeCardsType=document.querySelectorAll(`.${select}`)
 pokeCards.forEach(function(pokeCard) {
