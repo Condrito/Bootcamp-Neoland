@@ -1,10 +1,10 @@
 
 const randomNumber= ()=>`${Math.floor(Math.random()*(180 - 60) + 60)}`;
 const RandomColor=()=>`rgb(${randomNumber()},${randomNumber()},${randomNumber()})`;
-const colorBackground=()=>{
-    document.body.style.background= `linear-gradient(to right, ${RandomColor()}, ${RandomColor()})`;}
+export const colorBackground=()=>{
+    document.body.style.background= `linear-gradient(to right, ${RandomColor()}, ${RandomColor()})`};
 
-
+    
     
 
 export const addEventColor=()=>{

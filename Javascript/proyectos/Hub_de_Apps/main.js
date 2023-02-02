@@ -4,13 +4,13 @@ import { createNavbar } from './pages/componentes/navbar/Navbar'
 import { addEventColor } from './utiles/utiles'
 import { createDashboard } from './pages/dashboard/Dashboard'
 import { printPokemons } from './pages/pokeapi/Pokeapi'
-
+import { colorBackground } from './utiles/utiles'
 createNavbar()
 
 addEventColor()
 
 
-
+colorBackground();
 
 export const init=(navigation)=>{
     switch(navigation){
