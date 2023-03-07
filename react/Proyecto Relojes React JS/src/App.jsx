@@ -1,14 +1,7 @@
+import './App.css';
 
-import './App.css'
+const App = () => {
+  return <div className="App"></div>;
+};
 
-const App=()=> {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-    
-    </div>
-  )
-}
-
-export default App
+export default App;
