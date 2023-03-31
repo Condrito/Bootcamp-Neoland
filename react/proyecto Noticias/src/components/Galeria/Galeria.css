@@ -1,0 +1,12 @@
+.galeria{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    flex-wrap: wrap;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+    
+    
+}
+

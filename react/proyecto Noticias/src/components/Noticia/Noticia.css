@@ -1,0 +1,35 @@
+.noticiaDatos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+
+}
+
+.author{
+    padding-left: 5rem;
+}
+
+.original{
+    padding-right: 5rem;
+}
+
+.noticiaCompleta{
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+.noticiaContainer{
+    gap: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
