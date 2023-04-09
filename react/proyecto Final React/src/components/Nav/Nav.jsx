@@ -1,3 +1,5 @@
+import './nav.css';
+
 import React, { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -12,10 +14,10 @@ const Nav = () => {
   };
 
   return (
-    <>
+    <div className="navContainer">
       {user && (
         <nav>
-          <ul>
+          <ul className="nav">
             <li>
               <NavLink to="/Destino">Destino</NavLink>
             </li>
@@ -35,7 +37,7 @@ const Nav = () => {
           </ul>
         </nav>
       )}
-    </>
+    </div>
   );
 };
 

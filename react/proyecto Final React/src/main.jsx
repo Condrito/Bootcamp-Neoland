@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import App from './App';
+import { TourDataContextProvider } from './components/Context/TourDataContest';
 import { UserContextProvider } from './components/Context/UserContest';
 import ProtectedRoute from './components/ProtectedRoute';
 import CiudadDetalle from './pages/CiudadDetalle/CiudadDetalle';
@@ -19,53 +20,55 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <UserContextProvider>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<LoginPage />} />
-            <Route
-              path="/Destino"
-              element={
-                <ProtectedRoute>
-                  <Destino />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/Destino/:id"
-              element={
-                <ProtectedRoute>
-                  <CiudadDetalle />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/Vuelos"
-              element={
-                <ProtectedRoute>
-                  <Vuelos />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/Hoteles"
-              element={
-                <ProtectedRoute>
-                  <Hoteles />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/Favoritos"
-              element={
-                <ProtectedRoute>
-                  <Favoritos />
-                </ProtectedRoute>
-              }
-            />
+        <TourDataContextProvider>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<LoginPage />} />
+              <Route
+                path="/Destino"
+                element={
+                  <ProtectedRoute>
+                    <Destino />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/Destino/:ciudadId?"
+                element={
+                  <ProtectedRoute>
+                    <CiudadDetalle />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/Vuelos"
+                element={
+                  <ProtectedRoute>
+                    <Vuelos />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/Hoteles"
+                element={
+                  <ProtectedRoute>
+                    <Hoteles />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/Favoritos"
+                element={
+                  <ProtectedRoute>
+                    <Favoritos />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route path="/*" element={<Page404 />} />
-          </Route>
-        </Routes>
+              <Route path="/*" element={<Page404 />} />
+            </Route>
+          </Routes>
+        </TourDataContextProvider>
       </UserContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
