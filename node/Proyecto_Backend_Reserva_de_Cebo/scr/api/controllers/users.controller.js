@@ -114,7 +114,50 @@ const checkNewUser = async (req, res, next) => {
   }
 };
 
+//--------------------------------------------------------------------------------
+//·························RESEND CODE CONFIRMATION·······························
+//--------------------------------------------------------------------------------
+
+const resendCode = async (req, res, next) => {
+  const email = process.env.EMAIL;
+  const password = process.env.PASSWORD;
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: email,
+      pass: password,
+    },
+  });
+
+  const userExist = await User.findOne({ email: req.body.email });
+  try {
+    if (userExist) {
+      const mailOptions = {
+        from: email,
+        to: req.body.email,
+        subject: 'Confirmation code Reserva de Cebo',
+        text: `Your code is ${userExist.confirmationCode}`,
+      };
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent:' + info.response);
+          return res.status(200).json({
+            resend: true,
+          });
+        }
+      });
+    } else {
+      return res.status(404).json('User not found');
+    }
+  } catch (error) {
+    return next(setError(500, error.message || 'Error general send code'));
+  }
+};
+
 module.exports = {
   register,
   checkNewUser,
+  resendCode,
 };
