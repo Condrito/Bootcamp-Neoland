@@ -2,7 +2,7 @@
 
 const express = require('express');
 const dotenv = require('dotenv');
-const connect = require('./src/utils/db');
+const connect = require('./scr/utils/db');
 const { configCloudinary } = require('./scr/middlewares/files.middleware');
 
 dotenv.config();
@@ -43,6 +43,10 @@ app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ limit: '5mb', extended: true }));
 
 //! ------ LAS ROUTAS -------------------------------------------
+
+const UserRoutes = require('./scr/api/routes/user.routes');
+
+app.use('/api/v1/users', UserRoutes);
 
 app.use('*', (req, res, next) => {
   const error = new Error('Route not found');
