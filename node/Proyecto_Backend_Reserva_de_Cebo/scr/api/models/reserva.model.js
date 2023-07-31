@@ -3,9 +3,10 @@ const { Schema } = mongoose;
 const ReservasSchema = new Schema(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    fecha: { type: Date, required: true },
-    hora: { type: String, required: true },
-    cantidad: { type: Number, require: true },
+    cebo: { type: mongoose.Schema.Types.ObjectId, ref: 'Catalogo' },
+    fechaDeLaReserva: { type: Date, required: true },
+    horaDeLaReserva: { type: String, required: true },
+    cantidad: { type: Number, default: 0, required: true },
     estado: {
       type: String,
       enum: ['pendiente', 'confirmada', 'cancelada'],

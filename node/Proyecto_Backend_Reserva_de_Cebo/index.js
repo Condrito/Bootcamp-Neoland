@@ -39,14 +39,20 @@ app.use((req, res, next) => {
 
 //! ----- DECIRLE EL TIPO DE SERVE WEB QUE VAMOS A TENER, UNA CONFIG BASICA INICIAL -----
 // Json Data
-app.use(express.json({ limit: '5mb' }));
-app.use(express.urlencoded({ limit: '5mb', extended: true }));
+app.use(express.json({ limit: '15mb' }));
+app.use(express.urlencoded({ limit: '15mb', extended: false }));
 
 //! ------ LAS ROUTAS -------------------------------------------
 
 const UserRoutes = require('./scr/api/routes/user.routes');
+const CeboRoutes = require('./scr/api/routes/cebo.routes');
+const StockRoutes = require('./scr/api/routes/stock.routes');
+const PedidoRoutes = require('./scr/api/routes/pedido.routes');
 
 app.use('/api/v1/users', UserRoutes);
+app.use('/api/v1/cebo', CeboRoutes);
+app.use('/api/v1/stock', StockRoutes);
+app.use('/api/v1/pedido', PedidoRoutes);
 
 app.use('*', (req, res, next) => {
   const error = new Error('Route not found');

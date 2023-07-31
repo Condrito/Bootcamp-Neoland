@@ -1,9 +1,12 @@
 const User = require('../models/user.model');
-//const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const setError = require('../../helpers/handle-error');
 const { deleteImgCloudinary } = require('../../middlewares/files.middleware');
+const { generateToken } = require('../../utils/token');
+const randomPassword = require('../../utils/randomPassword');
+
 dotenv.config();
 
 //--------------------------------------------------------------------------------
@@ -46,32 +49,37 @@ const register = async (req, res, next) => {
       if (req.file) deleteImgCloudinary(catchImg);
       return next(setError(409, 'This user already exist'));
     } else {
-      const createUser = await newUser.save();
-      createUser.password = null;
+      try {
+        const createUser = await newUser.save();
+        createUser.password = null;
+        const mailOptions = {
+          from: email,
+          to: req.body.email,
+          subject: 'Code confirmation',
+          text: `Your code is ${confirmationCode}`,
+        };
 
-      const mailOptions = {
-        from: email,
-        to: req.body.email,
-        subject: 'Code confirmation',
-        text: `Your code is ${confirmationCode}`,
-      };
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent:' + info.response);
+          }
+        });
 
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent:' + info.response);
-        }
-      });
-
-      return res.status(201).json({
-        user: createUser,
-        confirmationCode: confirmationCode,
-      });
+        return res.status(201).json({
+          user: createUser,
+          confirmationCode: confirmationCode,
+        });
+      } catch (error) {
+        return res.status(404).json(error.message);
+      }
     }
   } catch (error) {
     if (req.file) deleteImgCloudinary(catchImg);
-    setError(error.code || 500, error.message || 'failed create user');
+    return next(
+      setError(error.code || 500, error.message || 'failed create user')
+    );
   }
 };
 
@@ -156,8 +164,247 @@ const resendCode = async (req, res, next) => {
   }
 };
 
+//--------------------------------------------------------------------------------
+//····································LOGIN·······································
+//--------------------------------------------------------------------------------
+
+const login = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const userDB = await User.findOne({ email });
+    if (!userDB) {
+      return res.status(404).json('User not found');
+    } else {
+      if (bcrypt.compareSync(password, userDB.password)) {
+        const token = generateToken(userDB._id, email);
+        return res.status(200).json({
+          user: userDB,
+          token,
+        });
+      } else {
+        return res.status(404).json('Invalid password');
+      }
+    }
+  } catch (error) {
+    return next(
+      setError(500 || error.code, 'General error login' || error.message)
+    );
+  }
+};
+
+//--------------------------------------------------------------------------------
+//····················CAMBIO DE CONTRASEÑA SIN ESTAR LOGUEADO·····················
+//--------------------------------------------------------------------------------
+
+const forgotPassword = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+
+    const userDb = await User.findOne({ email });
+    if (userDb) {
+      return res.redirect(
+        `http://localhost:8000/api/v1/users/forgotpassword/sendPassword/${userDb._id}`
+      );
+    } else {
+      return res.status(404).json('User not register');
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const sendPassword = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const userDb = await User.findById(id);
+
+    const email = process.env.EMAIL;
+    const password = process.env.PASSWORD;
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: email,
+        pass: password,
+      },
+    });
+
+    let passwordSecure = randomPassword();
+    const mailOptions = {
+      from: email,
+      to: userDb.email,
+      subject: '-----',
+      text: `User: ${userDb.name}. Your new code login is ${passwordSecure} Hemos enviado esto porque tenemos una solicitud de cambio de contraseña, si no has sido ponte en contacto con nosotros, gracias.`,
+    };
+
+    transporter.sendMail(mailOptions, async function (error) {
+      if (error) {
+        console.log(error);
+
+        return res.status(404).json('dont sent email and dont update user');
+      } else {
+        const newPasswordHash = bcrypt.hashSync(passwordSecure, 10);
+
+        try {
+          await User.findByIdAndUpdate(id, { password: newPasswordHash });
+
+          const updateUser = await User.findById(id);
+          if (bcrypt.compareSync(passwordSecure, updateUser.password)) {
+            return res.status(200).json({
+              updateUser: true,
+              sendPassword: true,
+            });
+          } else {
+            return res.status(404).json({
+              updateUser: false,
+              sendPassword: true,
+            });
+          }
+        } catch (error) {
+          return res.status(404).json(error.message);
+        }
+      }
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+//--------------------------------------------------------------------------------
+//······················CAMBIO DE CONTRASEÑA ESTANDO LOGUEADO·····················
+//--------------------------------------------------------------------------------
+
+const modifyPassword = async (req, res, next) => {
+  try {
+    const { password, newPassword } = req.body;
+
+    const { _id } = req.user;
+    if (bcrypt.compareSync(password, req.user.password)) {
+      const newPasswordHash = bcrypt.hashSync(newPassword, 10);
+      await User.findByIdAndUpdate(_id, { password: newPasswordHash });
+
+      const updateUser = await User.findById(_id);
+
+      if (bcrypt.compareSync(newPassword, updateUser.password)) {
+        return res.status(200).json({
+          updateUser: true,
+        });
+      } else {
+        return res.status(404).json({
+          updateUser: false,
+        });
+      }
+    } else {
+      return res.status(404).json('password not match');
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
+//--------------------------------------------------------------------------------
+//··································UPDATE········································
+//--------------------------------------------------------------------------------
+
+const updateUser = async (req, res, next) => {
+  let catchImg = req.file?.path;
+
+  try {
+    // actualizamos los indexes de los elementos unicos por si han modificado
+    await User.syncIndexes();
+    // instanciamos un nuevo modelo de user
+    const patchUser = new User(req.body);
+    // si tenemos la req.file le metemos el path de cloudinary
+    if (req.file) {
+      patchUser.imagen = req.file.path;
+    }
+    // estas cosas no quiero que me cambien por lo cual lo cojo del req.user gracias a que esto es con auth
+    patchUser._id = req.user._id;
+    patchUser.password = req.user.password;
+    patchUser.rol = req.user.rol;
+    patchUser.confirmationCode = req.user.confirmationCode;
+    patchUser.check = req.user.check;
+    patchUser.email = req.user.email;
+
+    // actualizamos en la db con el id y la instancia del modelo de user
+    try {
+      await User.findByIdAndUpdate(req.user._id, patchUser);
+      // borrramos en cloudinary la imagen antigua
+      if (req.file) {
+        deleteImgCloudinary(req.user.imagen);
+      }
+
+      //! ----------------test  runtime ----------------
+      // buscamos el usuario actualizado
+      const updateUser = await User.findById(req.user._id);
+
+      // cogemos la keys del body
+      const updateKeys = Object.keys(req.body);
+
+      // creamos una variable para  guardar los test
+      const testUpdate = [];
+      // recorremos las keys y comparamos
+      updateKeys.forEach((item) => {
+        if (updateUser[item] == req.body[item]) {
+          testUpdate.push({
+            [item]: true,
+          });
+        } else {
+          testUpdate.push({
+            [item]: false,
+          });
+        }
+      });
+
+      if (req.file) {
+        updateUser.imagen == req.file.path
+          ? testUpdate.push({
+              file: true,
+            })
+          : testUpdate.push({
+              file: false,
+            });
+      }
+      return res.status(200).json({
+        testUpdate,
+      });
+    } catch (error) {
+      return res.status(404).json(error.message);
+    }
+  } catch (error) {
+    if (req.file) deleteImgCloudinary(catchImg);
+    return next(error);
+  }
+};
+
+//--------------------------------------------------------------------------------
+//··································DELETE········································
+//--------------------------------------------------------------------------------
+
+const deleteUser = async (req, res, next) => {
+  try {
+    const { _id } = req.user;
+    await User.findByIdAndDelete(_id);
+    if (await User.findById(_id)) {
+      return res.status(404).json('Dont delete');
+    } else {
+      deleteImgCloudinary(req.user.imagen);
+      return res.status(200).json('ok delete');
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   register,
   checkNewUser,
   resendCode,
+  login,
+  forgotPassword,
+  sendPassword,
+  modifyPassword,
+  updateUser,
+  deleteUser,
 };
